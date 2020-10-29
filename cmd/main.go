@@ -2,10 +2,11 @@ package main
 
 import (
         "fmt"
+        "github.com/chris530/gostuff/pkg/coolchris"
        )
        
 func main(){
 
-   fmt.Println("Chris is cool")
+        coolchris.Hello()
    
 }
