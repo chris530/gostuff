@@ -1,45 +1,41 @@
-//
-// Starting to notifing cool...
-// Starting to notifing is...
-// Finished notifying is...
-// Starting to notifing super...
-// Starting to notifing chris...
-// Finished notifying cool...
-// Finished notifying chris...
-// Finished notifying super...
-// All services notified!
-//
-//
-
-
-
 package main
 
 import (
 	"fmt"
 	"sync"
 	"time"
-	"math/rand"
 )
 
-func notify(services ...string) {
-	var wg sync.WaitGroup
 
-	for _, service := range services {
-		wg.Add(1)
-		go func(s string) {
-			fmt.Printf("Starting to notifing %s...\n", s)
-			time.Sleep(time.Duration(rand.Intn(3)) * time.Second)
-			fmt.Printf("Finished notifying %s...\n", s)
-			wg.Done()
-		}(service)
-	}
+func a(wg *sync.WaitGroup){
 
-	wg.Wait()
-	fmt.Println("All services notified!")
+  time.Sleep(5 * time.Second)  // sleep 5 sec
+  fmt.Println("Running a")
+  wg.Done()
+
+}
+
+
+func b(wg *sync.WaitGroup){
+
+  fmt.Println("Running b")
+  wg.Done()
+
+ 
 }
 
 
 func main() {
-	notify("chris" , "is", "super", "cool")
+
+  
+  var wg sync.WaitGroup
+  wg.Add(2)
+
+  go a(&wg)
+  go b(&wg)
+
+  wg.Wait()
+
+  fmt.Println("I am done ")
+	
 }
