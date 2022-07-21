@@ -1,45 +1,29 @@
-//
-// go run mytest.go
-// Two
-// Three
-// One
-
-
-
+// You can edit this code!
+// Click here and start typing.
 package main
 
 import (
-        "fmt"
-        "time"
-       )
+	"fmt"
+)
 
+func mytest(yo *int, c chan int) {
 
-func run1(cc chan string){
-  time.Sleep(7 * time.Second)
-  cc<-"One"
+	fmt.Println("I am in the function ", *yo)
+	*yo = *yo + 7
+
+	// send back 14
+	c <- *yo
+
 }
 
-func run2(cc chan string){
-  time.Sleep(1 * time.Second)
-  cc<-"Two"
-}
+func main() {
+	c := make(chan int, 1)
+	var p int = 7
+	go mytest(&p, c)
+	n := <-c
+	fmt.Println("Back in main ", n)
 
-func run3(cc chan string){
-  time.Sleep(4 * time.Second)
-  cc<-"Three"
-}
-
-
-func main(){
-
-  c := make(chan string)
-  
-  go run1(c)
-  go run2(c)
-  go run3(c)
-
-  fmt.Println(<-c) 
-  fmt.Println(<-c) 
-  fmt.Println(<-c) 
-
+	// pointer set p to 17 also
+	fmt.Println("new p", p)
+	fmt.Scanln()
 }
