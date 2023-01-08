@@ -1,4 +1,4 @@
-package coolchris
+package chris
 
 import (
         "fmt" 
@@ -6,6 +6,6 @@ import (
 
 func Hello(){
 
-   fmt.Println("Hello mr chris")
+   fmt.Println("Hello Chris")
    
 }
