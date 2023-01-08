@@ -1,1 +1,1 @@
-go install github.com/chris530/gostuff/cmd@main
+go install github.com/chris530/gostuff@main
