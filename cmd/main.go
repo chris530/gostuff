@@ -1,7 +1,7 @@
 package main
 
 import (
-        "github.com/chris530/gostuff/pkg/coolchris"
+        "github.com/chris530/gostuff/pkg/chris"
         "fmt"
         "sync"
         "time"
